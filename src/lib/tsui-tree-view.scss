@@ -1,0 +1,73 @@
+.tsui-tree-view-wrapper {
+  position: relative;
+  background-color: var(--tsui-app-background-color, #ffffff);
+  color: var(--tsui-app-font-color, #333333);
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.tsui-tree-view {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  .tsui-tree-item {
+    position: relative;
+    width: 100%;
+    padding: 2px 4px;
+    box-sizing: border-box;
+
+    .node-item {
+      width: 100%;
+      white-space: nowrap;
+      display: flex;
+      padding: 2px 0;
+      box-sizing: border-box;
+
+      img {
+        width: 18px;
+        height: 18px;
+        padding: 3px;
+        vertical-align: middle;
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        &.branch:hover {
+          border-radius: 50%;
+          background-color: var(--tsui-item-image-hover-background-color, #f0f0f0);
+        }
+      }
+
+      >span {
+        display: inline-block;
+        width: 100%;
+        line-height: 24px;
+        box-sizing: border-box;
+        margin-left: 8px;
+        vertical-align: baseline;
+        cursor: pointer;
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: hidden;
+
+        &:hover {
+          background-color: var(--tsui-item-hover-background-color, #FFFFE1);
+          color: var(--tsui-item-hover-font-color, #333333);
+        }
+      }
+
+      &.selected>span {
+        background-color: var(--tsui-item-selected-background-color, #e0e0e0);
+        color: var(--tsui-item-selected-font-color, #333333);
+      }
+    }
+
+    .tsui-sub-tree {
+      position: relative;
+      padding-left: 12px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+}
