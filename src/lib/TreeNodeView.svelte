@@ -24,14 +24,19 @@
         }
     }
 
+    let respond: boolean = true;
     const handleNodeClick = (e: MouseEvent) => {
-        dispatch('select', node);
+        if (respond) {
+            respond = false;
+            dispatch('select', node);
+            setTimeout(()=>{respond=true}, 200);
+        }
     }
 
 </script>
 
 <div class="tsui-tree-item">
-    <div class="node-item" class:selected={activeNode===node} on:click={handleNodeClick}>
+    <div class="node-item" class:selected={activeNode===node} on:click={handleNodeClick} on:dblclick>
         <img class:branch={isBranch()} alt="" style="cursor: {isBranch() ? 'pointer' : 'default'}"
              src={isBranch() ? (expanded ? expandIcon : foldIcon) : leafIcon}
              on:click={(e)=>{handleNodeIconClick(e)}}/>
@@ -40,7 +45,7 @@
     {#if expanded}
         <div class="tsui-sub-tree">
             {#each node.children as child}
-                <svelte:self node={child} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select/>
+                <svelte:self node={child} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select on:dblclick/>
             {/each}
         </div>
     {/if}
