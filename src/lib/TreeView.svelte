@@ -19,7 +19,6 @@
 
     const handleNodeSelected = (e) => {
         activeNode = e.detail;
-        console.log('选中节点', activeNode);
         dispatch('select', activeNode);
     }
 
@@ -28,7 +27,7 @@
 <div class="tsui-tree-view-wrapper" {style}>
     <div class="tsui-tree-view">
         {#each nodes as node}
-            <TreeNodeView {node} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select={handleNodeSelected}/>
+            <TreeNodeView {node} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select={handleNodeSelected} on:dblclick/>
         {/each}
     </div>
 </div>

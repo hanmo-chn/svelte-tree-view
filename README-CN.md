@@ -1,26 +1,26 @@
-# Tree View Component
+# 树形视图组件
 
-This is a Svelte component that allows you to display a tree structure of TreeNode objects, where each node can be expanded or collapsed to reveal or hide its child nodes.
+这是一个Svelte组件，允许您显示由TreeNode对象构成的树形结构，每个节点都可以展开或折叠，以显示或隐藏其子节点。
 
-## Installation
+## 安装
 
-you can install it via npm.
+你可以通过npm安装它。
 
 ```shell
 npm i -D @hanmotec/tsui-tree-view
 ```
 
-## TreeNode Interface and Tree Converter Function
+## TreeNode接口和Tree转换函数
 
-### TreeNode Interface
-The TreeNode interface defines the structure of a tree node object. It has the following properties:
+### TreeNode接口
+TreeNode接口定义了树节点对象的结构。它具有以下属性：
 
-**value**: a string that represents the value of the node.  
-**text**: a string that represents the display text for the node.  
-**data**: an optional property that can hold additional data for the node.  
-**children**: an optional array of TreeNode objects that represent the child nodes of the current node.  
-**parent**: an optional property that represents the parent node of the current node.  
-Here's an example of how to create a TreeNode object:  
+**value**: 表示节点值的字符串。  
+**text**: 表示节点的显示文本的字符串。 
+**data**: 一个可选的属性，可以保存节点的其他数据。  
+**children**: 一个可选的TreeNode对象数组，表示当前节点的子节点。  
+**parent**: 一个可选的属性，表示当前节点的父节点。  
+以下是如何创建TreeNode对象的示例：  
 ```typescript
 const node: TreeNode = {
     value: 'node1',
@@ -31,15 +31,15 @@ const node: TreeNode = {
 };
 ```
 
-### Tree Converter Functions
-The buildTree function takes an array of objects and converts it into a tree structure. The function takes the following parameters:
+### Tree转换函数
+buildTree函数将一个对象数组转换为树形结构。该函数接受以下参数：
 
-**arr**: the array of objects to convert.
-**keyField**: the name of the field in the objects that contains the node value.  
-**textField**: the name of the field in the objects that contains the display text for the node.  
-**parentField**: the name of the field in the objects that contains the value of the parent node.  
-**rootParentCode**: an optional value that represents the root node of the tree.  
-Here's an example of how to use the buildTree function:  
+**arr**: 要转换的对象数组。
+**keyField**: 包含节点值的对象中的字段的名称。  
+**textField**: 包含节点的显示文本的对象中的字段的名称。  
+**parentField**: 包含父节点的值的对象中的字段的名称。
+**rootParentCode**: 表示树的根节点的可选值。  
+以下是如何使用buildTree函数的示例：  
 
 ```typescript
 const data = [
@@ -53,7 +53,7 @@ const data = [
 const tree = buildTree(data, 'id', 'name', 'parentId');
 ```
 
-This will create a tree structure with the following nodes:
+这将创建一个具有以下节点的树形结构：
 ```typescript
 [
     {
@@ -92,10 +92,11 @@ This will create a tree structure with the following nodes:
 
 ```
 
-## Usage
-To use this component, you will need to import it into your Svelte app and provide it with an array of TreeNode objects to display. You can also customize the icons used for the expand/collapse buttons and the leaf nodes, as well as apply a custom CSS style.
+## 使用方法
 
-Here's an example of how to use the component:
+要使用此组件，您需要将其导入到您的 Svelte 应用程序中，并提供要显示的 TreeNode 对象的数组。您还可以自定义用于展开/折叠按钮和叶节点的图标，以及应用自定义 CSS 样式。
+
+以下是如何使用该组件的示例：
 
 
 ```sveltehtml
@@ -143,20 +144,20 @@ Here's an example of how to use the component:
 
 ```
 
-## Props
-The TreeView component accepts the following props:
+## 属性
+TreeView 组件接受以下属性：
 
-**nodes**: an array of TreeNode objects to display in the tree.
-**expand**: a boolean indicating whether the tree should be fully expanded or collapsed by default.
-**expandIcon**: the icon to use for expanded nodes.
-**foldIcon**: the icon to use for collapsed nodes.
-**leafIcon**: the icon to use for leaf nodes.
-**style**: a string containing CSS styles to apply to the tree container.
+**nodes**: 要在树中显示的 TreeNode 对象的数组。
+**expand**: 一个布尔值，指示默认情况下树是否应完全展开或折叠。
+**expandIcon**: 用于展开节点的图标。
+**foldIcon**: 用于折叠节点的图标。
+**leafIcon**: 用于叶节点的图标。
+**style**: 包含要应用于树容器的 CSS 样式的字符串。
 
 ## Events
-The TreeView component emits a select event when a node is clicked. The event object contains a detail property with the selected TreeNode object.
 
-To handle the select event, you can add an event listener to the component instance:
+当单击节点时，TreeView 组件会发出 select 事件。事件对象包含一个带有所选 TreeNode 对象的 detail 属性。
+要处理 select 事件，您可以向组件实例添加事件侦听器：
 
 ```sveltehtml
 <script>
@@ -174,8 +175,10 @@ To handle the select event, you can add an event listener to the component insta
 
 ```
 
-**License**
-This project is licensed under the MIT license.
+当双击节点的时候，TreeView 组件会发出 dblclick 事件
 
-**Contributing**
-We welcome contributions to this package! If you have an idea for a feature or would like to report a bug, please open an issue. If you'd like to contribute code, please fork the repository and create a pull request.
+**许可证**
+T本项目采用 MIT 许可证授权。
+
+**贡献**
+我们欢迎对此软件包的贡献！如果您有功能的想法或想报告错误，请打开一个问题。如果您想贡献代码，请 fork 该存储库并创建拉取请求。
