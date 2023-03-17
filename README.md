@@ -1,5 +1,7 @@
 # Tree View Component
 
+[中文文档](https://github.com/hanmo-chn/svelte-tree-view/blob/main/README-CN.md)
+
 This is a Svelte component that allows you to display a tree structure of TreeNode objects, where each node can be expanded or collapsed to reveal or hide its child nodes.
 
 ## Installation

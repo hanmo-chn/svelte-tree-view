@@ -96,8 +96,11 @@ const tree = buildTree(data, 'id', 'name', 'parentId');
 
 要使用此组件，您需要将其导入到您的 Svelte 应用程序中，并提供要显示的 TreeNode 对象的数组。您还可以自定义用于展开/折叠按钮和叶节点的图标，以及应用自定义 CSS 样式。
 
+但是使用此组件，可以在工程启动的时候引入css文件。
+```typescript
+import "@hanmotec/tsui-tree-view/tsui-tree-view.css"
+```
 以下是如何使用该组件的示例：
-
 
 ```sveltehtml
 <script>
