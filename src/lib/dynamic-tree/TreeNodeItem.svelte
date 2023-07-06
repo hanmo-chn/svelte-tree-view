@@ -1,20 +1,21 @@
 <script lang="ts">
 
-    import type TreeNode from "./TreeNode";
     import {createEventDispatcher} from "svelte";
+    import type TreeItem from "./TreeItem";
 
+    export let textAttr: string = "label";
+    export let childAttr: string = "children";
     export let expandIcon: any;
     export let foldIcon: any;
     export let leafIcon: any;
-    export let node: TreeNode;
-    export let activeNode: TreeNode;
-    export let expand: boolean = false;
+    export let node: TreeItem;
+    export let activeNode: TreeItem;
 
-    let expanded: boolean = expand;
+    let expanded: boolean = node.expand;
     const dispatch = createEventDispatcher();
 
     const isBranch = () => {
-        return node.children && node.children.length > 0;
+        return node.data[childAttr] && node.data[childAttr].length > 0;
     }
 
     const handleNodeIconClick = (e: MouseEvent) => {
@@ -24,6 +25,9 @@
             respond = false;
             if (isBranch()) {
                 expanded = !expanded
+                node.expand = expanded;
+            } else {
+                dispatch('iconClick', node);
             }
             setTimeout(()=>{respond=true}, 200);
         }
@@ -38,6 +42,8 @@
         }
     }
 
+    $: expanded=node.expand;
+
 </script>
 
 <div class="tsui-tree-item">
@@ -45,12 +51,13 @@
         <img class:branch={isBranch()} alt="" style="cursor: {isBranch() ? 'pointer' : 'default'}"
              src={isBranch() ? (expanded ? expandIcon : foldIcon) : leafIcon}
              on:click={(e)=>{handleNodeIconClick(e)}}/>
-        <span>{node.text}</span>
+        <span>{node.data[textAttr]}</span>
     </div>
     {#if expanded}
         <div class="tsui-sub-tree">
-            {#each node.children as child}
-                <svelte:self node={child} {expand} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select on:dblclick/>
+            {#each node.data[childAttr] as child}
+                <svelte:self node={child} {textAttr} {childAttr} {expandIcon} {foldIcon}
+                             {leafIcon} {activeNode} on:iconClick on:select on:dblclick/>
             {/each}
         </div>
     {/if}

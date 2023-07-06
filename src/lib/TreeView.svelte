@@ -27,7 +27,7 @@
 <div class="tsui-tree-view-wrapper" {style}>
     <div class="tsui-tree-view">
         {#each nodes as node}
-            <TreeNodeView {node} {expand} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:iconClick on:select={handleNodeSelected} on:dblclick/>
+            <TreeNodeView {node} {expand} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select={handleNodeSelected} on:dblclick/>
         {/each}
     </div>
 </div>
