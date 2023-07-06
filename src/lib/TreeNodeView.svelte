@@ -8,8 +8,9 @@
     export let leafIcon: any;
     export let node: TreeNode;
     export let activeNode: TreeNode;
+    export let expand: boolean = false;
 
-    let expanded: boolean = false;
+    let expanded: boolean = expand;
     const dispatch = createEventDispatcher();
 
     const isBranch = () => {
@@ -19,8 +20,14 @@
     const handleNodeIconClick = (e: MouseEvent) => {
         e.stopPropagation();
         e.preventDefault();
-        if (isBranch()) {
-            expanded = !expanded
+        if (respond) {
+            respond = false;
+            if (isBranch()) {
+                expanded = !expanded
+            } else {
+                dispatch('iconClick', node);
+                setTimeout(()=>{respond=true}, 200);
+            }
         }
     }
 
@@ -45,7 +52,7 @@
     {#if expanded}
         <div class="tsui-sub-tree">
             {#each node.children as child}
-                <svelte:self node={child} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select on:dblclick/>
+                <svelte:self node={child} {expand} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:iconClick on:select on:dblclick/>
             {/each}
         </div>
     {/if}

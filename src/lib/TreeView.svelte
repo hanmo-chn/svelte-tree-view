@@ -14,7 +14,7 @@
     export let leafIcon: any = iconFile;
     export let style: string = '';
 
-    let activeNode: TreeNode = null;
+    export let activeNode: TreeNode = null;
     let dispatch = createEventDispatcher();
 
     const handleNodeSelected = (e) => {
@@ -27,7 +27,7 @@
 <div class="tsui-tree-view-wrapper" {style}>
     <div class="tsui-tree-view">
         {#each nodes as node}
-            <TreeNodeView {node} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:select={handleNodeSelected} on:dblclick/>
+            <TreeNodeView {node} {expand} {expandIcon} {foldIcon} {leafIcon} {activeNode} on:iconClick on:select={handleNodeSelected} on:dblclick/>
         {/each}
     </div>
 </div>

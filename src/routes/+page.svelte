@@ -26,7 +26,7 @@
 </script>
 <h1>List Box Demo</h1>
 <div style="width: 320px; height: 600px; position: relative; border: 1px solid #e0e0e0">
-    <TreeView   style="width: 100%; height: 100%" {nodes} on:select={(e)=>{console.log('选择项目：', e.detail)}}>
+    <TreeView expand={true}  style="width: 100%; height: 100%" {nodes} on:select={(e)=>{console.log('选择项目：', e.detail)}}>
 
     </TreeView>
 </div>

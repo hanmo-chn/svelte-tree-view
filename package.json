@@ -1,12 +1,12 @@
 {
   "name": "@hanmotec/tsui-tree-view",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "vite dev",
-    "build": "node-sass src/lib/tsui-tree-view.scss -o src/lib --output-style compressed && svelte-kit sync && svelte-package",
+    "build": "sass src/lib/tsui-tree-view.scss:src/lib/tsui-tree-view.css && svelte-kit sync && svelte-package",
     "prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
